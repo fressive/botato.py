@@ -6,6 +6,5 @@ yarl
 idna-ssl
 typing-extensions
 aiohttp
-pyyaml
 requests_async
 diskcache

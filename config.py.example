@@ -1,0 +1,42 @@
+# 配置文件
+
+''' 
+权限管理
+
+这部分配置允许你对 Bot 使用者的权限进行管理。
+'''
+
+disabled_type = []
+# [list<int>] 屏蔽列表内的消息来源
+# 1 - 私聊
+# 2 - 群组
+# 3 - 群组临时消息
+# 4 - 讨论组消息
+# 5 - 讨论组临时消息
+# 6 - QQ 临时消息
+
+enabled_groups = [641236878]
+# [list<int>] 启用该 Bot 的群
+# 格式：群号
+
+shield_qq = []
+# [list<int>] 屏蔽列表内 QQ 的信息
+# 格式：QQ 号
+
+'''
+杂项
+'''
+
+prefix = ":"
+# [str] 指令前缀
+# 只处理以前缀开头的指令
+
+'''
+osu!
+
+osu! 相关配置
+'''
+
+osu_api_key = ""
+# [str] osu!Api key
+# https://osu.ppy.sh/p/api

@@ -1,15 +1,13 @@
 import httpapi
 import random
 
-konachanApi = httpapi.HttpGetAPI("http://konachan.net")
+konachanApi = httpapi.HttpGetAPI("https://konachan.net")
 konachanPostApi = konachanApi.endpoint("/post.json")
 
 yandereApi = httpapi.HttpGetAPI("https://yande.re")
 yanderePostApi = yandereApi.endpoint("/post.json")
 
 async def paper(cls, phrase, message):
-    print("Call")
-
     query = "order:random rating:safe score:>=120"
 
     if phrase.get("~query", None):
@@ -18,7 +16,6 @@ async def paper(cls, phrase, message):
     limit = int(phrase.get("*number", 1))
     limit = 10 if limit > 10 else limit
 
-    print(query)
     api = konachanPostApi
     rep = (await api.call({
         "limit": limit,

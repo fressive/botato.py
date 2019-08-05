@@ -24,14 +24,15 @@ python QQLightBot.py -H 127.0.0.1 -P 49632 -U / -L INFO botato:BotatoHandler
 
 ## 已完成的功能
 
-### paper
+### 杂项
+#### paper
 
 从 konachan 中获取图片，结果均过滤 NSFW 内容（rating = safe）。
 
 ```
 paper [query] [{x} limit]
-// query [str] Tags
-// limit [n] 图片数量，最多不超过 10 张。
+// query [str]       Tags
+// limit [0<int<=10] 图片数量，最多不超过 10 张。
 
 paper
 // 随机获取一张图片

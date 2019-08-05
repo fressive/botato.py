@@ -31,8 +31,8 @@ python QQLightBot.py -H 127.0.0.1 -P 49632 -U / -L INFO botato:BotatoHandler
 
 ```
 paper [query] [{x} limit]
-// query [str]       Tags
-// limit [0<int<=10] 图片数量，最多不超过 10 张。
+// query [str]  Tags
+// limit [int]  图片数量，最多不超过 10 张。
 
 paper
 // 随机获取一张图片

@@ -54,7 +54,7 @@ async def artist(cls, phrase, message):
     })).json()
 
     flag = False
-    response = "Not Found"
+    response = ""
     
     if not sauce["results"] or len(sauce["results"]) == 0:
         flag = True
@@ -64,16 +64,18 @@ async def artist(cls, phrase, message):
             if sim >= 80.0:
                 # if the similarity greater than 80%, 
                 # then it is usually the source
-                if i["data"]["pixiv_id"]:
+                data = i["data"]
+                if "pixivid" in data.keys():
                     # from pixiv
-                    response = "Author: {}\nhttps://www.pixiv.net/member.php?id={}".format(i["data"]["member_name"], i["data"]["member_id"])
-                elif i["data"]["author_name"] and i["data"]["author_url"]:
-                    response = "Author: {}\n{}".format(i["data"]["author_name"], i["data"]["author_url"])
-
-                if i["data"]["ext_urls"]:
-                    response = "Source: {}\n\n{}".format(", ".join(i["data"]["ext_urls"]), response)
-                if i["data"]["title"]:
-                    response = "{}\n{}".format(i["data"]["title"], response)
+                    response = "Author: {}\nhttps://www.pixiv.net/member.php?id={}".format(data["member_name"], data["member_id"])
+                elif "author_name" in data.keys() and "author_url" in data.keys():
+                    response = "Author: {}\n{}".format(data["author_name"], data["author_url"])
+                if "ext_urls" in data.keys():
+                    response = "Source: {}\n\n{}".format(", ".join(data["ext_urls"]), response)
+                if "source" in data.keys():
+                    response = "Source: {}\n\n{}".format(data["source"], response)
+                if "title" in data.keys():
+                    response = "{}\n{}".format(data["title"], response)
 
                 response = "Match: {}\n\n{}".format(sim, response)
                     
@@ -81,7 +83,7 @@ async def artist(cls, phrase, message):
         else:
             flag = True
     if flag:
-        pass 
+        response = "Not Found"
         # TODO: search from ascii2d
 
     await cls.sendMessage(message['type'], message['group'], message['qq'], response)

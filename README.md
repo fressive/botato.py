@@ -1,20 +1,42 @@
 # botato.py
-A multifunction bot written in Python.
+一个使用 Python 编写的多功能 QQBot 。
 
-The [QQLight](https://www.52chat.cc/) library is from [qqRobot](https://github.com/QPromise/qqRobot) by [QPromise](https://github.com/QPromise) .
+[QQLight](https://www.52chat.cc/) 库来自 [qqRobot](https://github.com/QPromise/qqRobot) by [QPromise](https://github.com/QPromise) 。
 
 
-## Usage
-1. Install dependencies
+## 使用
+
+本 Bot 需要 Python 3.5 及更高版本运行。
+
+1. 安装依赖
 
 ```
 pip install -r requirements.txt
 ```
 
-2. Modify the configuration file (`config.py.example`) and rename to `config.py`.
+2. 修改配置文件 (`config.py.example`) 及重命名至 `config.py`.
 
-3. Run
+3. 运行
 
 ```
 python QQLightBot.py -H 127.0.0.1 -P 49632 -U / -L INFO botato:BotatoHandler
+```
+
+## 已完成的功能
+
+### paper
+
+从 konachan 中获取图片，结果均过滤 NSFW 内容（rating = safe）。
+
+```
+paper [query] [{x} limit]
+// query [str] Tags
+// limit [n] 图片数量，最多不超过 10 张。
+
+paper
+// 随机获取一张图片
+paper neko
+// 获取一张 tags 为 neko 的图片
+paper neko x 10
+// 获取十张 tags 为 neko 的图片
 ```

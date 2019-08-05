@@ -41,3 +41,11 @@ paper neko
 paper neko x 10
 // 获取十张 tags 为 neko 的图片
 ```
+
+#### artist
+
+从 SauceNAO 以及 ascii2d（未完成）查找图片来源。
+
+```
+artist <image>
+```

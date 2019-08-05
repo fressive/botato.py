@@ -40,3 +40,13 @@ osu! 相关配置
 osu_api_key = ""
 # [str] osu!Api key
 # https://osu.ppy.sh/p/api
+
+'''
+SacueNao
+
+SacueNao 相关配置
+'''
+
+sacuenao_api_key = ""
+# [str] SacueNao Api Key
+# https://saucenao.com/user.php?page=search-api

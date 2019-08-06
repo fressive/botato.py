@@ -1,6 +1,8 @@
-import httpapi
-import re
+
 import config
+import httpapi
+import random
+import re
 
 konachanApi = httpapi.HttpGetAPI("https://konachan.net")
 konachanPostApi = konachanApi.endpoint("/post.json")
@@ -8,10 +10,22 @@ konachanPostApi = konachanApi.endpoint("/post.json")
 yandereApi = httpapi.HttpGetAPI("https://yande.re")
 yanderePostApi = yandereApi.endpoint("/post.json")
 
+danbooruApi = httpapi.HttpGetAPI("https://danbooru.donmai.us")
+danbooruPostApi = danbooruApi.endpoint("/posts.json")
+
 saucenaoApi = httpapi.HttpGetAPI("https://saucenao.com/search.php")
 
+searchApis = {
+    "konachan": konachanPostApi,
+    "k": konachanPostApi,
+    "yandere": yanderePostApi,
+    "y": yanderePostApi,
+    "danbooru": danbooruPostApi,
+    "d": danbooruPostApi
+}
+
 async def paper(cls, phrase, message):
-    query = "order:random rating:safe score:>=120"
+    query = "rating:safe"
 
     if phrase.get("~query", None):
         query = "{} {}".format(phrase.get("~query", None), query)
@@ -19,10 +33,17 @@ async def paper(cls, phrase, message):
     limit = int(phrase.get("*number", 1))
     limit = 10 if limit > 10 else limit
 
-    api = konachanPostApi
+    pf = phrase.get("~platform", "random")
+
+    api = random.choice(list(searchApis.values())) if pf == "random" else searchApis[pf] if pf in searchApis else searchApis["k"]
+
+    if api != danbooruPostApi:
+        query = "order:random {}".format(query)
+
     rep = (await api.call({
         "limit": limit,
-        "tags": query
+        "tags": query,
+        "random": True
     })).json()
 
     if len(rep) == 0:

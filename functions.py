@@ -11,13 +11,19 @@ functions = {
 
 commands = [
     Phrase("help", ["help me"]),
+
     Phrase("artist", ["artist", ["*img", "a"]]),
+
     Phrase("paper", ["paper"]),
     Phrase("paper", ["paper", ["~query", "a"]]),
+    Phrase("paper", ["paper", ["~query", "a"], "on", ["~platform", "a"]]),
     Phrase("paper", ["paper", ["~query", "a"], "x", ["*number", "1"]]),
+    Phrase("paper", ["paper", ["~query", "a"], "x", ["*number", "1"], "on", ["~platform", "a"]]),
+
     Phrase("recent", ["recent"]),
     Phrase("recent", ["recent", ["~query", "a b c"], "-mode", ["~mode", "0"]]),
     Phrase("recent", ["recent", ["~query", "a b c"]]),
+    
     Phrase("osudebug", ["osudebug"]),
 ]
 

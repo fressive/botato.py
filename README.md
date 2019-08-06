@@ -30,7 +30,7 @@ python QQLightBot.py -H 127.0.0.1 -P 49632 -U / -L INFO botato:BotatoHandler
 从 konachan 中获取图片，结果均过滤 NSFW 内容（rating = safe）。
 
 ```
-paper [query] [{x} limit]
+paper [query] [{x} limit] [{on} source]
 // query [str]  Tags
 // limit [int]  图片数量，最多不超过 10 张。
 
@@ -40,6 +40,10 @@ paper neko
 // 获取一张 tags 为 neko 的图片
 paper neko x 10
 // 获取十张 tags 为 neko 的图片
+paper neko on danbooru
+// 从 danbooru 获取一张 tags 为 neko 的图片
+paper neko x 10 on danbooru
+// 从 danbooru 获取十张 tags 为 neko 的图片
 ```
 
 #### artist
